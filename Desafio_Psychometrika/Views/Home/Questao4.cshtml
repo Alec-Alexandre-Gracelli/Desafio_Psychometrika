@@ -1,0 +1,54 @@
+﻿@{
+    ViewData["Title"] = "Página Inicial";
+
+    var alternativa = new AlternativaQuestoes().Alternativas;
+}
+
+<div class="pageQuestion">
+    <form asp-controller="Home" asp-action="Questao4" method="post" class="formQuestion">
+        <div>
+            <p class="text-lg-start">Questão 4</p>
+            <p class="text-lg-center">Prova: Matemátima e suas tecnologias</p>
+            <hr>
+            <p class="text-start">
+                Um gerente decidiu fazer um estudo financeiro da empresa onde trabalha analisando as receitas anuais dos três últimos anos. Tais receitas são apresentadas no quadro.
+                Estes dados serão utilizados para projetar a receita mínima esperada para o ano atual (ano IV), 
+                pois a receita esperada para o ano IV é obtida em função das variações das receitas anuais anteriores, 
+                utilizando a seguinte regra: a variação do ano IV para o ano III será igual à variação do ano III para o II adicionada à média aritmética entre essa variação e a variação do ano II para o I.
+            </p>
+            <p>O valor da receita mínima esperada, em bilhão de reais, será de</p>
+            <div>
+                A
+                <input type="radio" name="alternativa" value="0" />
+                <label asp-for="@alternativa">10,0.</label>
+            </div>
+            <div>
+                B
+                <input type="radio" name="alternativa" value="1" />
+                <label asp-for="@alternativa">12,0.</label>
+            </div>
+            <div>
+                C
+                <input type="radio" name="alternativa" value="2" />
+                <label asp-for="@alternativa">13,2.</label>
+            </div>
+            <div>
+                D
+                <input type="radio" name="alternativa" value="3" />
+                <label asp-for="@alternativa">16,8.</label>
+            </div>
+            <div>
+                E
+                <input type="radio" name="alternativa" value="4" />
+                <label asp-for="@alternativa">20,6.</label>
+            </div>
+        </div>
+        <footer>
+            <a asp-action="Gabarito" class="btn">
+                Revisar Depois
+            </a>
+            <input class="btn" value="Salvar" />
+        </footer>
+    </form>
+</div>
+

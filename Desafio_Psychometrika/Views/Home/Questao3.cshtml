@@ -1,0 +1,53 @@
+﻿@{
+    ViewData["Title"] = "Página Inicial";
+
+    var alternativa = new AlternativaQuestoes().Alternativas;
+}
+
+<div class="pageQuestion">
+    <form asp-controller="Home" asp-action="Questao3" class="formQuestion">
+        <div>
+            <p class="text-lg-start">Questão 3</p>
+            <p class="text-lg-center">Prova: Matemátima e suas tecnologias</p>
+            <hr>
+            <p class="text-start">
+                Um pesquisador observou, em uma árvore, um ninho de uma espécie de falcão. 
+                Apenas um filhote apresentava uma coloração típica de penas de ambos os pais. 
+                Foram coletadas amostras de DNA dos pais e filhotes para caracterização genética dos alelos responsáveis pela coloração das penas. 
+                O perfil de bandas obtido para cada indivíduo do ninho para os lócus 1 e 2, onde se localizam os genes dessa característica, está representado na figura.
+            </p>
+            <p>Dos filhotes, qual apresenta a coloração típica de penas dos pais?</p>
+            <div>
+                A
+                <input type="radio" name="alternativa" value="0" />
+                <label asp-for="@alternativa">1</label>
+            </div>
+            <div>
+                B
+                <input type="radio" name="alternativa" value="1" />
+                <label asp-for="@alternativa">2</label>
+            </div>
+            <div>
+                C
+                <input type="radio" name="alternativa" value="2" />
+                <label asp-for="@alternativa">3</label>
+            </div>
+            <div>
+                D
+                <input type="radio" name="alternativa" value="3" />
+                <label asp-for="@alternativa">4</label>
+            </div>
+            <div>
+                E
+                <input type="radio" name="alternativa" value="4" />
+                <label asp-for="@alternativa">5</label>
+            </div>
+        </div>
+        <footer>
+            <a asp-action="Questao4" class="btn">
+                Revisar Depois
+            </a>
+            <input class="btn" value="Salvar" />
+        </footer>
+    </form>
+</div>

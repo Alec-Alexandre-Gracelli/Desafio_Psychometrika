@@ -1,0 +1,30 @@
+﻿@model Desafio_Psychometrika.ViewModels.LoginViewModel
+
+@{
+    Layout = "_LayoutDeslogado";
+    ViewData["Title"] = "Login";
+}
+
+@if (TempData["MensagemErro"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        <button type="button" class="btn btn-danger btn-sm close-alert" data-bs-dismiss="alert" aria-label="Close">X</button>
+        @TempData["MensagemErro"]
+    </div>
+}
+<div class="page">
+    <form asp-controller="Login" asp-action="Entrar" method="post" class="formLogin">
+        <h1>Login</h1>
+        <label for="email">Nome</label>
+        <input type="text" asp-for="Nome" placeholder="Digite seu nome" autofocus="true" />
+        @Html.ValidationMessageFor(x => x.Nome)
+        <label for="password">E-mail</label>
+        <input type="email" asp-for="Email" placeholder="Digite seu e-mail" />
+        @Html.ValidationMessageFor(x => x.Email)
+        <input type="submit" value="Acessar" class="btn" />
+        <p class="link">
+            Ainda não tem conta?
+            <a asp-controller="Login" asp-action="Cadastro">Cadastre-se</a>
+        </p>
+    </form>
+</div>
