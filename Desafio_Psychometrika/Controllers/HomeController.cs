@@ -22,23 +22,26 @@ namespace Desafio_Psychometrika.Controllers
         [HttpPost]
         public IActionResult Questao1(ProvaSimulado provaSimulado)
         {
-            var questao = _bancoContext.Questoes.Where(x => x.Questao == 1)
-                           .Select(s => s.QuestoesId).FirstOrDefault();
+            var questao = _bancoContext.Questoes
+                           .Where(x => x.Questao == 1)
+                           .Select(s => s.QuestoesId)
+                           .FirstOrDefault();
 
-            if(provaSimulado.Resposta != null)
+            if (provaSimulado.Resposta != null)
             {
                 provaSimulado.Respondido = true;
             }
 
-            provaSimulado = new ProvaSimulado
-            {
-                ProvaSimuladoId = new Guid("3a07ecc9-d651-46e2-884b-a6a085f49bc6"),
-                ProvaNome = "Matemática e suas tecnologias",
-                QuestoesId = questao,
-            };
+            provaSimulado.ProvaSimuladoId = new Guid("3a07ecc9-d651-46e2-884b-a6a085f49bc6");
+            provaSimulado.ProvaNome = "Matemática e suas tecnologias";
+            provaSimulado.QuestoesId = questao;
+
             _bancoContext.ProvaSimulados.Add(provaSimulado);
+            //_bancoContext.SaveChanges();
+
             return View();
         }
+
         public IActionResult Questao2()
         {
             return View();
