@@ -51,10 +51,8 @@ namespace Desafio_Psychometrika.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("ProvaNome")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid>("UsuarioId")
-                        .HasColumnType("uniqueidentifier");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.HasKey("ProvaSimuladoId");
 
@@ -101,6 +99,8 @@ namespace Desafio_Psychometrika.Migrations
 
                     b.HasKey("UsuarioId");
 
+                    b.HasIndex("ProvaSimuladoId");
+
                     b.ToTable("Usuarios");
                 });
 
@@ -122,9 +122,20 @@ namespace Desafio_Psychometrika.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Desafio_Psychometrika.Models.Usuario", b =>
+                {
+                    b.HasOne("Desafio_Psychometrika.Models.ProvaSimulado", null)
+                        .WithMany("Usuarios")
+                        .HasForeignKey("ProvaSimuladoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Desafio_Psychometrika.Models.ProvaSimulado", b =>
                 {
                     b.Navigation("Questoes");
+
+                    b.Navigation("Usuarios");
                 });
 
             modelBuilder.Entity("Desafio_Psychometrika.Models.Questoes", b =>

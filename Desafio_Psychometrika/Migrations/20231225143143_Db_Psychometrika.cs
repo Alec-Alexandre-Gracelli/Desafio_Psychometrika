@@ -14,26 +14,11 @@ namespace Desafio_Psychometrika.Migrations
                 columns: table => new
                 {
                     ProvaSimuladoId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    UsuarioId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    ProvaNome = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    ProvaNome = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ProvaSimulados", x => x.ProvaSimuladoId);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Usuarios",
-                columns: table => new
-                {
-                    UsuarioId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    ProvaSimuladoId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Nome = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Usuarios", x => x.UsuarioId);
                 });
 
             migrationBuilder.CreateTable(
@@ -49,6 +34,26 @@ namespace Desafio_Psychometrika.Migrations
                     table.PrimaryKey("PK_Questoes", x => x.QuestoesId);
                     table.ForeignKey(
                         name: "FK_Questoes_ProvaSimulados_ProvaSimuladoId",
+                        column: x => x.ProvaSimuladoId,
+                        principalTable: "ProvaSimulados",
+                        principalColumn: "ProvaSimuladoId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Usuarios",
+                columns: table => new
+                {
+                    UsuarioId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ProvaSimuladoId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Nome = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Usuarios", x => x.UsuarioId);
+                    table.ForeignKey(
+                        name: "FK_Usuarios_ProvaSimulados_ProvaSimuladoId",
                         column: x => x.ProvaSimuladoId,
                         principalTable: "ProvaSimulados",
                         principalColumn: "ProvaSimuladoId",
@@ -83,6 +88,11 @@ namespace Desafio_Psychometrika.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Questoes_ProvaSimuladoId",
                 table: "Questoes",
+                column: "ProvaSimuladoId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Usuarios_ProvaSimuladoId",
+                table: "Usuarios",
                 column: "ProvaSimuladoId");
         }
 
