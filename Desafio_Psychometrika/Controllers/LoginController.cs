@@ -1,4 +1,5 @@
 ﻿using Desafio_Psychometrika.Data;
+using Desafio_Psychometrika.Helper;
 using Desafio_Psychometrika.Models;
 using Desafio_Psychometrika.Repositorio;
 using Desafio_Psychometrika.ViewModels;
@@ -6,15 +7,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Desafio_Psychometrika.Controllers
 {
-    public class LoginController : Controller
+    public class LoginController : ControllerBase
     {
-        private readonly BancoContext _bancoContext;
-        private readonly IUsuarioRepositorio _usuarioRepositorio;
-
-        public LoginController(BancoContext bancoContext, IUsuarioRepositorio usuarioRepositorio)
+        public LoginController(BancoContext bancoContext, ISessao sessao, IUsuarioRepositorio usuarioRepositorio) : base(bancoContext, sessao, usuarioRepositorio)
         {
-            _bancoContext = bancoContext;
-            _usuarioRepositorio = usuarioRepositorio;
         }
 
         public IActionResult Index()
@@ -34,7 +30,8 @@ namespace Desafio_Psychometrika.Controllers
 
                     if (usuario != null)
                     {
-                        return RedirectToAction("Questao1", "Home");
+                        _sessao.CriarSessaoDoUsuario(usuario);
+                        return RedirectToAction("Index", "PrimeiraQuestao");
                     }
                 }
                 TempData["MensagemErro"] = $"Nome e/ou Email inválido(s). Por favor, tente novamente.";
@@ -72,6 +69,13 @@ namespace Desafio_Psychometrika.Controllers
                 TempData["MensagemErro"] = $"Ops, não conseguimos cadastrar seu usuário, tente novamente, detalhe do erro: {erro.Message}";
                 return RedirectToAction("Index");
             }
+        }
+
+        public IActionResult Sair()
+        {
+            _sessao.RemoverSessaoDoUsuario();
+
+            return RedirectToAction("Index");
         }
     }
 }

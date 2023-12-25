@@ -1,18 +1,18 @@
 ﻿@model ProvaSimulado
 
 @{
-    ViewData["Title"] = "Página Inicial";
+    ViewData["Title"] = "Segunda Questão";
 }
 
 <div class="pageQuestion">
-    <form asp-controller="Home" asp-action="Questao2" class="formQuestion">
+    <form asp-controller="SegundaQuestao" asp-action="Criar" class="formQuestion">
         <div>
             <p class="text-lg-start">Questão 2</p>
             <p class="text-lg-center">Prova: Matemátima e suas tecnologias</p>
             <hr>
             <p class="text-start">
-                Um aluno registrou as notas bimestrais de algumas de suas disciplinas numa tabela. 
-                Ele observou que as entradas numéricas da tabela formavam uma matriz 4×4, e que poderia calcular as médias anuais dessas disciplinas usando produto de matrizes. 
+                Um aluno registrou as notas bimestrais de algumas de suas disciplinas numa tabela.
+                Ele observou que as entradas numéricas da tabela formavam uma matriz 4×4, e que poderia calcular as médias anuais dessas disciplinas usando produto de matrizes.
                 Todas as provas possuíam o mesmo peso, e a tabela que ele conseguiu é mostrada a seguir.
 
 
@@ -20,32 +20,32 @@
             <p>Para obter essas médias, ele multiplicou a matriz obtida a partir da tabela por</p>
             <div>
                 A
-                <input type="radio" name="alternativa"  />
+                <input type="radio" name="alternativa" />
                 <label asp-for="Resposta"><img src="~/img/a-20.png" /></label>
             </div>
             <div>
                 B
-                <input type="radio" name="alternativa"  />
+                <input type="radio" name="alternativa" />
                 <label asp-for="Resposta"><img src="~/img/b-20.png" /></label>
             </div>
             <div>
                 C
-                <input type="radio" name="alternativa"  />
+                <input type="radio" name="alternativa" />
                 <label asp-for="Resposta"><img src="~/img/c-23.png" /></label>
             </div>
             <div>
                 D
-                <input type="radio" name="alternativa"  />
+                <input type="radio" name="alternativa" />
                 <label asp-for="Resposta"><img src="~/img/d-21.png" /></label>
             </div>
             <div>
                 E
-                <input type="radio" name="alternativa"  />
+                <input type="radio" name="alternativa" />
                 <label asp-for="Resposta"><img src="~/img/e-20.png" /></label>
             </div>
         </div>
         <footer>
-            <a asp-action="Questao3" class="btn">
+            <a asp-controller="TerceiraQuestao" asp-action="Index" class="btn">
                 Revisar Depois
             </a>
             <input type="submit" class="btn" value="Salvar" />

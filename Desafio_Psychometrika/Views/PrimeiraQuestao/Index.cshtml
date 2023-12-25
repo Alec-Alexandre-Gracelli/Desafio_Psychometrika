@@ -1,11 +1,11 @@
 ﻿@model ProvaSimulado
 
 @{
-    ViewData["Title"] = "Página Inicial";
+    ViewData["Title"] = "Primeira Questão";
 }
 
 <div class="pageQuestion">
-    <form asp-controller="Home" asp-action="Questao1" class="formQuestion" method="post">
+    <form asp-controller="PrimeiraQuestao" asp-action="Criar" class="formQuestion" method="post">
         <div>
             <p class="text-lg-start">Questão 1</p>
             <p class="text-lg-center">Prova: Matemátima e suas tecnologias</p>
@@ -19,32 +19,32 @@
             <p>Com base nessas informações, o banco que transferiu a maior quantia via TED é o banco</p>
             <div>
                 A
-                <input type="radio" name="alternativa" value="0" />
-                <label asp-for="Resposta">1</label>
+                <input type="radio" name="Resposta" value="0" />
+                <label asp-for="Resposta.Value">1</label>
             </div>
             <div>
                 B
-                <input type="radio" name="alternativa" value="1" />
-                <label asp-for="Resposta">2</label>
+                <input type="radio" name="Resposta" value="1" />
+                <label asp-for="Resposta.Value">2</label>
             </div>
             <div>
                 C
-                <input type="radio" name="alternativa" value="2" />
-                <label asp-for="Resposta">3</label>
+                <input type="radio" name="Resposta" value="2" />
+                <label asp-for="Resposta.Value">3</label>
             </div>
             <div>
                 D
-                <input type="radio" name="alternativa" value="3" />
-                <label asp-for="Resposta">4</label>
+                <input type="radio" name="Resposta" value="3" />
+                <label asp-for="Resposta.Value">4</label>
             </div>
             <div>
                 E
-                <input type="radio" name="alternativa" value="4" />
-                <label asp-for="Resposta">5</label>
+                <input type="radio" name="Resposta" value="4" />
+                <label asp-for="Resposta.Value">5</label>
             </div>
         </div>
         <footer>
-            <a asp-action="Questao2" class="btn">
+            <a asp-controller="SegundaQuestao" asp-action="Index" class="btn">
                 Revisar Depois
             </a>
             <input type="submit" class="btn" value="Salvar" />

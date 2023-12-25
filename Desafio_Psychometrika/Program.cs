@@ -1,4 +1,5 @@
 using Desafio_Psychometrika.Data;
+using Desafio_Psychometrika.Helper;
 using Desafio_Psychometrika.Repositorio;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,8 +12,16 @@ builder.Services.AddEntityFrameworkSqlServer()
     .AddDbContext<BancoContext>(
         options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 builder.Services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
+builder.Services.AddScoped<ISessao, Sessao>();
+
+builder.Services.AddSession(o =>
+{
+    o.Cookie.HttpOnly = true;
+    o.Cookie.IsEssential = true;
+});
 
 var app = builder.Build();
 
@@ -30,6 +39,8 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+
+app.UseSession();
 
 app.MapControllerRoute(
     name: "default",
