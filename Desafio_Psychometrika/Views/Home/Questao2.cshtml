@@ -1,7 +1,7 @@
-﻿@{
-    ViewData["Title"] = "Página Inicial";
+﻿@model ProvaSimulado
 
-    var alternativa = new AlternativaQuestoes().Alternativas;
+@{
+    ViewData["Title"] = "Página Inicial";
 }
 
 <div class="pageQuestion">
@@ -20,28 +20,28 @@
             <p>Para obter essas médias, ele multiplicou a matriz obtida a partir da tabela por</p>
             <div>
                 A
-                <input type="radio" name="alternativa" value="0" />
-                <label asp-for="@alternativa"><img src="~/img/a-20.png"/></label>
+                <input type="radio" name="alternativa" value="@((char)Model.Resposta)" />
+                <label asp-for="Resposta"><img src="~/img/a-20.png" /></label>
             </div>
             <div>
                 B
-                <input type="radio" name="alternativa" value="1" />
-                <label asp-for="@alternativa"><img src="~/img/b-20.png" /></label>
+                <input type="radio" name="alternativa" value="@((char)Model.Resposta)" />
+                <label asp-for="Resposta"><img src="~/img/b-20.png" /></label>
             </div>
             <div>
                 C
-                <input type="radio" name="alternativa" value="2" />
-                <label asp-for="@alternativa"><img src="~/img/c-23.png" /></label>
+                <input type="radio" name="alternativa" value="@((char)Model.Resposta)" />
+                <label asp-for="Resposta"><img src="~/img/c-23.png" /></label>
             </div>
             <div>
                 D
-                <input type="radio" name="alternativa" value="3" />
-                <label asp-for="@alternativa"><img src="~/img/d-21.png" /></label>
+                <input type="radio" name="alternativa" value="@((char)Model.Resposta)" />
+                <label asp-for="Resposta"><img src="~/img/d-21.png" /></label>
             </div>
             <div>
                 E
-                <input type="radio" name="alternativa" value="4" />
-                <label asp-for="@alternativa"><img src="~/img/e-20.png" /></label>
+                <input type="radio" name="alternativa" value="@((char)Model.Resposta)" />
+                <label asp-for="Resposta"><img src="~/img/e-20.png" /></label>
             </div>
         </div>
         <footer>

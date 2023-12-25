@@ -1,4 +1,6 @@
-﻿@{
+﻿@model ProvaSimulado
+
+@{
     ViewData["Title"] = "Página Inicial";
 }
 
@@ -17,28 +19,28 @@
             <p>Com base nessas informações, o banco que transferiu a maior quantia via TED é o banco</p>
             <div>
                 A
-                <input type="radio" name="alternativa" value="" />
-                <label>1</label>
+                <input type="radio" name="alternativa" value="@((char)Model.Resposta)" />
+                <label asp-for="Resposta">1</label>
             </div>
             <div>
                 B
-                <input type="radio" name="alternativa" value="" />
-                <label>2</label>
+                <input type="radio" name="alternativa" value="@((char)Model.Resposta)" />
+                <label asp-for="Resposta">2</label>
             </div>
             <div>
                 C
-                <input type="radio" name="alternativa" value="" />
-                <label>3</label>
+                <input type="radio" name="alternativa" value="@((char)Model.Resposta)" />
+                <label asp-for="Resposta">3</label>
             </div>
             <div>
                 D
-                <input type="radio" name="alternativa" value="" />
-                <label>4</label>
+                <input type="radio" name="alternativa" value="@((char)Model.Resposta)" />
+                <label asp-for="Resposta">4</label>
             </div>
             <div>
                 E
-                <input type="radio" name="alternativa" value="" />
-                <label>5</label>
+                <input type="radio" name="alternativa" value="@((char)Model.Resposta)" />
+                <label asp-for="Resposta">5</label>
             </div>
         </div>
         <footer>

@@ -20,7 +20,6 @@ namespace Desafio_Psychometrika.Repositorio
         public Usuario Adicionar(Usuario usuarioModel)
         {
             _context.Usuarios.Add(usuarioModel);
-            usuarioModel.ProvaSimuladoId = _context.ProvaSimulados.FirstOrDefault().ProvaSimuladoId;
             _context.SaveChanges();
             return usuarioModel;
         }

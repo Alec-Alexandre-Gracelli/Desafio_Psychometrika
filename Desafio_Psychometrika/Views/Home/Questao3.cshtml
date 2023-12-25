@@ -1,7 +1,7 @@
-﻿@{
-    ViewData["Title"] = "Página Inicial";
+﻿@model ProvaSimulado
 
-    var alternativa = new AlternativaQuestoes().Alternativas;
+@{
+    ViewData["Title"] = "Página Inicial";
 }
 
 <div class="pageQuestion">
@@ -19,28 +19,28 @@
             <p>Dos filhotes, qual apresenta a coloração típica de penas dos pais?</p>
             <div>
                 A
-                <input type="radio" name="alternativa" value="0" />
-                <label asp-for="@alternativa">1</label>
+                <input type="radio" name="alternativa" value="@((char)Model.Resposta)" />
+                <label asp-for="Resposta">1</label>
             </div>
             <div>
                 B
-                <input type="radio" name="alternativa" value="1" />
-                <label asp-for="@alternativa">2</label>
+                <input type="radio" name="alternativa" value="@((char)Model.Resposta)" />
+                <label asp-for="Resposta">2</label>
             </div>
             <div>
                 C
-                <input type="radio" name="alternativa" value="2" />
-                <label asp-for="@alternativa">3</label>
+                <input type="radio" name="alternativa" value="@((char)Model.Resposta)" />
+                <label asp-for="Resposta">3</label>
             </div>
             <div>
                 D
-                <input type="radio" name="alternativa" value="3" />
-                <label asp-for="@alternativa">4</label>
+                <input type="radio" name="alternativa" value="@((char)Model.Resposta)" />
+                <label asp-for="Resposta">4</label>
             </div>
             <div>
                 E
-                <input type="radio" name="alternativa" value="4" />
-                <label asp-for="@alternativa">5</label>
+                <input type="radio" name="alternativa" value="@((char)Model.Resposta)" />
+                <label asp-for="Resposta">5</label>
             </div>
         </div>
         <footer>

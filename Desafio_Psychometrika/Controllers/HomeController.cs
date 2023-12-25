@@ -18,6 +18,13 @@ namespace Desafio_Psychometrika.Controllers
         {
             return View();
         }
+
+        //[HttpPost]
+        //public IActionResult Questao1(ProvaSimulado provaSimulado)
+        //{
+        //    provaSimulado.
+        //    return View();
+        //}
         public IActionResult Questao2()
         {
             return View();
