@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Desafio_Psychometrika.Migrations
 {
     [DbContext(typeof(BancoContext))]
-    [Migration("20231225143143_Db_Psychometrika")]
+    [Migration("20231225165851_Db_Psychometrika")]
     partial class Db_Psychometrika
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -98,6 +98,9 @@ namespace Desafio_Psychometrika.Migrations
 
                     b.Property<Guid>("ProvaSimuladoId")
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("Respondido")
+                        .HasColumnType("bit");
 
                     b.HasKey("UsuarioId");
 

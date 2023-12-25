@@ -71,11 +71,5 @@ namespace Desafio_Psychometrika.Controllers
                 return RedirectToAction("Index");
             }
         }
-
-        [HttpPost]
-        public IActionResult Sair()
-        {
-            return View();
-        }
     }
 }

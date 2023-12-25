@@ -15,5 +15,7 @@ namespace Desafio_Psychometrika.Models
         [EmailAddress(ErrorMessage = "O e-mail informado não é válido!")]
         [StringLength (100)]
         public string Email { get; set; }
+
+        public bool Respondido { get; set; }
     }
 }

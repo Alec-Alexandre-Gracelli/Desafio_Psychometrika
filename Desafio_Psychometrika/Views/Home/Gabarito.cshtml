@@ -1,28 +1,78 @@
-﻿<table class="table-primary">...</table>
-<table class="table-secondary">...</table>
-<table class="table-success">...</table>
-<table class="table-danger">...</table>
-<table class="table-warning">...</table>
-<table class="table-info">...</table>
-<table class="table-light">...</table>
-<table class="table-dark">...</table>
+﻿@* @model Desafio_Psychometrika.ViewModels.GabaritoViewModel
+ *@
+<table id="customers">
+    <tr>
+        <th>Questão</th>
+        <th>Resposta</th>
+        <th>Prova</th>
+        <th>Status</th>
+    </tr>
 
-<tr class="table-primary">...</tr>
-<tr class="table-secondary">...</tr>
-<tr class="table-success">...</tr>
-<tr class="table-danger">...</tr>
-<tr class="table-warning">...</tr>
-<tr class="table-info">...</tr>
-<tr class="table-light">...</tr>
-<tr class="table-dark">...</tr>
+    <tr>
+        <td>Icone</td>
+        <td>Questoes</td>
+        <td>AlternativaQuestoes</td>
+        <td>Respondido</td>
+        <td>
+            <div class="btn-group" role="group">
+                <a role="button" class="btn btn-primary">Mudar Resposta</a>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>Icone</td>
+        <td>Questoes</td>
+        <td>AlternativaQuestoes</td>
+        <td>Respondido</td>
+        <td>
+            <div class="btn-group" role="group">
+                <a role="button" class="btn btn-primary">Mudar Resposta</a>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>Icone</td>
+        <td>Questoes</td>
+        <td>AlternativaQuestoes</td>
+        <td>Respondido</td>
+        <td>
+            <div class="btn-group" role="group">
+                <a role="button" class="btn btn-primary">Mudar Resposta</a>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>Icone</td>
+        <td>Questoes</td>
+        <td>AlternativaQuestoes</td>
+        <td>Respondido</td>
+        <td>
+            <div class="btn-group" role="group">
+                <a role="button" class="btn btn-primary">Mudar Resposta</a>
+            </div>
+        </td>
+    </tr>
+    @*  @if (Model != null)
+    {
+    foreach (Questoes questoes in Model.Questoes)
+    {
+    <tr>
+    <td>Icone</td>
+    <td>@Model.Questoes</td>
+    <td>@Model.AlternativaQuestoes</td>
+    <td>@Model.Usuarios.Respondido</td>
+    <td>
+    @if (Model.Usuarios.Respondido)
+    {
+    <div class="btn-group" role="group">
+    <a role="button" class="btn btn-primary" asp-controller="Home" asp-action="Questao1">Mudar Resposta</a>
+    </div>
+    }
 
-<tr>
-    <td class="table-primary">...</td>
-    <td class="table-secondary">...</td>
-    <td class="table-success">...</td>
-    <td class="table-danger">...</td>
-    <td class="table-warning">...</td>
-    <td class="table-info">...</td>
-    <td class="table-light">...</td>
-    <td class="table-dark">...</td>
-</tr>
+    </td>
+    </tr>
+    }
+    } *@
+
+
+</table>

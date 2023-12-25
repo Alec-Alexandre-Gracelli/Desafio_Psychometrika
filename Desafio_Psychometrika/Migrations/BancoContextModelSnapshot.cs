@@ -97,6 +97,9 @@ namespace Desafio_Psychometrika.Migrations
                     b.Property<Guid>("ProvaSimuladoId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<bool>("Respondido")
+                        .HasColumnType("bit");
+
                     b.HasKey("UsuarioId");
 
                     b.HasIndex("ProvaSimuladoId");

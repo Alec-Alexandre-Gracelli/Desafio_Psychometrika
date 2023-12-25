@@ -47,7 +47,8 @@ namespace Desafio_Psychometrika.Migrations
                     UsuarioId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     ProvaSimuladoId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Nome = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false)
+                    Email = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Respondido = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {

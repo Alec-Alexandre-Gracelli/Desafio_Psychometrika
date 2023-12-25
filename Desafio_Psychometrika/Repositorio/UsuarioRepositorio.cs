@@ -19,13 +19,8 @@ namespace Desafio_Psychometrika.Repositorio
 
         public Usuario Adicionar(Usuario usuarioModel)
         {
-            var novaProva = new ProvaSimulado
-            {
-                ProvaSimuladoId = new Guid("8ae65f6cd4f64c78997908dc054d9b1c"),
-                ProvaNome = "Matemática e suas tecnologias"
-            };
             _context.Usuarios.Add(usuarioModel);
-            _context.ProvaSimulados.Add(novaProva);
+            usuarioModel.ProvaSimuladoId = _context.ProvaSimulados.FirstOrDefault().ProvaSimuladoId;
             _context.SaveChanges();
             return usuarioModel;
         }
