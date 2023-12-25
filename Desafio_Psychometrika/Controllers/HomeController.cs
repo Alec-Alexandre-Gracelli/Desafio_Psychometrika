@@ -18,12 +18,6 @@ namespace Desafio_Psychometrika.Controllers
         {
             return View();
         }
-
-        //[HttpPost]
-        //public IActionResult Questao1() 
-        //{
-        //   _bancoContext.Usuarios = 
-        //}
         public IActionResult Questao2()
         {
             return View();

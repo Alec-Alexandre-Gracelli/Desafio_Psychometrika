@@ -1,6 +1,6 @@
 ﻿namespace Desafio_Psychometrika.Models.Enum
 {
-    public enum Alternativas
+    public enum Resposta
     {
         A = 0,
         B = 1,

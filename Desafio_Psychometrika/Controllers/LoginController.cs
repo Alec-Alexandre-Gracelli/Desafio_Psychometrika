@@ -33,7 +33,11 @@ namespace Desafio_Psychometrika.Controllers
                     Usuario usuario = _usuarioRepositorio.BuscaPorLogin(loginModel.Nome, loginModel.Email);
 
                     if (usuario != null)
-                    return RedirectToAction("Questao1", "Home");
+                    {
+                        //HttpContext.Session.SetString("UserId", usuario.UsuarioId.ToString());
+
+                        return RedirectToAction("Questao1", "Home");
+                    }
                 }
                 TempData["MensagemErro"] = $"Nome e/ou Email inválido(s). Por favor, tente novamente.";
 
