@@ -34,8 +34,6 @@ namespace Desafio_Psychometrika.Controllers
 
                     if (usuario != null)
                     {
-                        //HttpContext.Session.SetString("UserId", usuario.UsuarioId.ToString());
-
                         return RedirectToAction("Questao1", "Home");
                     }
                 }
