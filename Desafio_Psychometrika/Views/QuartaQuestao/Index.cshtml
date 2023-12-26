@@ -4,8 +4,16 @@
     ViewData["Title"] = "Quarta Questão";
 }
 
+@if (TempData["MensagemSucesso"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
+        @TempData["MensagemSucesso"]
+    </div>
+}
+
 <div class="pageQuestion">
-    <form asp-controller="QuartaQuestao" asp-action="Criar" method="post" class="formQuestion">
+    <form asp-controller="QuartaQuestao" asp-action="Index" method="post" class="formQuestion">
         <div>
             <p class="text-lg-start">Questão 4</p>
             <p class="text-lg-center">Prova: Matemátima e suas tecnologias</p>
@@ -19,28 +27,28 @@
             <p>O valor da receita mínima esperada, em bilhão de reais, será de</p>
             <div>
                 A
-                <input type="radio" name="alternativa" />
-                <label asp-for="Resposta">10,0.</label>
+                <input type="radio" name="Resposta" value="0" />
+                <label asp-for="Resposta.Value">10,0.</label>
             </div>
             <div>
                 B
-                <input type="radio" name="alternativa" />
-                <label asp-for="Resposta">12,0.</label>
+                <input type="radio" name="Resposta" value="1" />
+                <label asp-for="Resposta.Value">12,0.</label>
             </div>
             <div>
                 C
-                <input type="radio" name="alternativa" />
-                <label asp-for="Resposta">13,2.</label>
+                <input type="radio" name="Resposta" value="2" />
+                <label asp-for="Resposta.Value">13,2.</label>
             </div>
             <div>
                 D
-                <input type="radio" name="alternativa" />
-                <label asp-for="Resposta">16,8.</label>
+                <input type="radio" name="Resposta" value="3" />
+                <label asp-for="Resposta.Value">16,8.</label>
             </div>
             <div>
                 E
-                <input type="radio" name="alternativa" />
-                <label asp-for="Resposta">20,6.</label>
+                <input type="radio" name="Resposta" value="4" />
+                <label asp-for="Resposta.Value">20,6.</label>
             </div>
         </div>
         <footer>

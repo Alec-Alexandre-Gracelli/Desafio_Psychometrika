@@ -4,8 +4,16 @@
     ViewData["Title"] = "Primeira Questão";
 }
 
+@if (TempData["MensagemSucesso"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
+        @TempData["MensagemSucesso"]
+    </div>
+}
+
 <div class="pageQuestion">
-    <form asp-controller="PrimeiraQuestao" asp-action="Criar" class="formQuestion" method="post">
+    <form asp-controller="PrimeiraQuestao" asp-action="Index" class="formQuestion" method="post">
         <div>
             <p class="text-lg-start">Questão 1</p>
             <p class="text-lg-center">Prova: Matemátima e suas tecnologias</p>

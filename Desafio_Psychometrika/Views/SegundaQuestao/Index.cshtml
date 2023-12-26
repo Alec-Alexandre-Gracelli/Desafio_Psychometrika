@@ -4,8 +4,16 @@
     ViewData["Title"] = "Segunda Questão";
 }
 
+@if (TempData["MensagemSucesso"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
+        @TempData["MensagemSucesso"]
+    </div>
+}
+
 <div class="pageQuestion">
-    <form asp-controller="SegundaQuestao" asp-action="Criar" class="formQuestion">
+    <form asp-controller="SegundaQuestao" asp-action="Index" class="formQuestion">
         <div>
             <p class="text-lg-start">Questão 2</p>
             <p class="text-lg-center">Prova: Matemátima e suas tecnologias</p>
@@ -20,28 +28,28 @@
             <p>Para obter essas médias, ele multiplicou a matriz obtida a partir da tabela por</p>
             <div>
                 A
-                <input type="radio" name="alternativa" />
-                <label asp-for="Resposta"><img src="~/img/a-20.png" /></label>
+                <input type="radio" name="Resposta" value="0" />
+                <label asp-for="Resposta.Value"><img src="~/img/a-20.png" /></label>
             </div>
             <div>
                 B
-                <input type="radio" name="alternativa" />
-                <label asp-for="Resposta"><img src="~/img/b-20.png" /></label>
+                <input type="radio" name="Resposta" value="1" />
+                <label asp-for="Resposta.Value"><img src="~/img/b-20.png" /></label>
             </div>
             <div>
                 C
-                <input type="radio" name="alternativa" />
-                <label asp-for="Resposta"><img src="~/img/c-23.png" /></label>
+                <input type="radio" name="Resposta" value="2" />
+                <label asp-for="Resposta.Value"><img src="~/img/c-23.png" /></label>
             </div>
             <div>
                 D
-                <input type="radio" name="alternativa" />
-                <label asp-for="Resposta"><img src="~/img/d-21.png" /></label>
+                <input type="radio" name="Resposta" value="3" />
+                <label asp-for="Resposta.Value"><img src="~/img/d-21.png" /></label>
             </div>
             <div>
                 E
-                <input type="radio" name="alternativa" />
-                <label asp-for="Resposta"><img src="~/img/e-20.png" /></label>
+                <input type="radio" name="Resposta" value="4" />
+                <label asp-for="Resposta.Value"><img src="~/img/e-20.png" /></label>
             </div>
         </div>
         <footer>

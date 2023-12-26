@@ -18,7 +18,7 @@ namespace Desafio_Psychometrika.Controllers
         }
 
         [HttpPost]
-        public IActionResult Criar(UsuarioProva usuarioProva)
+        public IActionResult Index(UsuarioProva usuarioProva)
         {
             Usuario usuarioLogado = _sessao.BuscarSessaoDoUsuario();
             usuarioProva.UsuarioId = usuarioLogado.UsuarioId;
@@ -34,7 +34,12 @@ namespace Desafio_Psychometrika.Controllers
             usuarioProva.Respondido = true;
 
             _bancoContext.UsuarioProvas.Add(usuarioProva);
-            //_bancoContext.SaveChanges();
+            _bancoContext.SaveChanges();
+            if (usuarioProva.Respondido)
+            {
+                TempData["MensagemSucesso"] = "Resposta salva com sucesso!";
+                return RedirectToAction("Index", "Gabarito");
+            }
             return View();
         }
     }
