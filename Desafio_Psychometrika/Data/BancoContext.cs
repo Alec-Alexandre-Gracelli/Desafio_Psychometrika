@@ -14,6 +14,7 @@ namespace Desafio_Psychometrika.Data
         public DbSet<ProvaSimulado> ProvaSimulados { get; set; }
         public DbSet<Questoes> Questoes { get; set; }
         public DbSet<Gabarito> Gabaritos { get; set; }
+        public DbSet<UsuarioProva> UsuarioProvas { get; set; }
 
     }
 }

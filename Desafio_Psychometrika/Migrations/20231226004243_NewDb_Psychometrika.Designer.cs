@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Desafio_Psychometrika.Migrations
 {
     [DbContext(typeof(BancoContext))]
-    [Migration("20231225202051_Db_Psychometrika")]
-    partial class Db_Psychometrika
+    [Migration("20231226004243_NewDb_Psychometrika")]
+    partial class NewDb_Psychometrika
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -36,8 +36,9 @@ namespace Desafio_Psychometrika.Migrations
                     b.Property<Guid>("QuestoesId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("RespostaCorreta")
-                        .HasColumnType("int");
+                    b.Property<string>("RespostaCorreta")
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
 
                     b.HasKey("GabaritoId");
 
@@ -54,21 +55,7 @@ namespace Desafio_Psychometrika.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<Guid>("QuestoesId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<bool>("Respondido")
-                        .HasColumnType("bit");
-
-                    b.Property<int?>("Resposta")
-                        .HasColumnType("int");
-
-                    b.Property<Guid>("UsuarioId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.HasKey("ProvaSimuladoId");
-
-                    b.HasIndex("UsuarioId");
 
                     b.ToTable("ProvaSimulados");
                 });
@@ -108,20 +95,30 @@ namespace Desafio_Psychometrika.Migrations
                     b.ToTable("Usuarios");
                 });
 
-            modelBuilder.Entity("Desafio_Psychometrika.Models.ProvaSimulado", b =>
+            modelBuilder.Entity("Desafio_Psychometrika.Models.UsuarioProva", b =>
                 {
-                    b.HasOne("Desafio_Psychometrika.Models.Usuario", "Usuario")
-                        .WithMany("ProvasSimuladas")
-                        .HasForeignKey("UsuarioId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Property<Guid>("UsuarioProvaId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Navigation("Usuario");
-                });
+                    b.Property<Guid>("ProvaSimuladoId")
+                        .HasColumnType("uniqueidentifier");
 
-            modelBuilder.Entity("Desafio_Psychometrika.Models.Usuario", b =>
-                {
-                    b.Navigation("ProvasSimuladas");
+                    b.Property<Guid>("QuestoesId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("Respondido")
+                        .HasColumnType("bit");
+
+                    b.Property<int?>("Resposta")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("UsuarioId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("UsuarioProvaId");
+
+                    b.ToTable("UsuarioProvas");
                 });
 #pragma warning restore 612, 618
         }

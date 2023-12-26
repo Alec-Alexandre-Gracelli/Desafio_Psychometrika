@@ -18,25 +18,22 @@ namespace Desafio_Psychometrika.Controllers
         }
 
         [HttpPost]
-        public IActionResult Criar(ProvaSimulado provaSimulado)
+        public IActionResult Criar(UsuarioProva usuarioProva)
         {
             Usuario usuarioLogado = _sessao.BuscarSessaoDoUsuario();
-            provaSimulado.UsuarioId = usuarioLogado.UsuarioId;
-            provaSimulado.ProvaSimuladoId = new Guid("3a07ecc9-d651-46e2-884b-a6a085f49bc6");
-            provaSimulado.ProvaNome = "Matemática e suas tecnologias";
-
+            usuarioProva.UsuarioId = usuarioLogado.UsuarioId;
+            usuarioProva.ProvaSimuladoId = _bancoContext.ProvaSimulados.Where(p => p.ProvaNome == "Matemática e suas tecnologias")
+                                                                       .Select(s => s.ProvaSimuladoId)
+                                                                       .FirstOrDefault();
             var questao = _bancoContext.Questoes
                            .Where(x => x.Questao == 1)
                            .Select(s => s.QuestoesId)
                            .FirstOrDefault();
 
-            provaSimulado.QuestoesId = questao;
+            usuarioProva.QuestoesId = questao;
+            usuarioProva.Respondido = true;
 
-            if (provaSimulado.Resposta != null)
-            {
-                provaSimulado.Respondido = true;
-            }
-            _bancoContext.ProvaSimulados.Add(provaSimulado);
+            _bancoContext.UsuarioProvas.Add(usuarioProva);
             //_bancoContext.SaveChanges();
             return View();
         }

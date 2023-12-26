@@ -5,7 +5,6 @@ namespace Desafio_Psychometrika.Models
     public class Usuario
     {
         public Guid UsuarioId { get; set; }
-        public virtual List<ProvaSimulado> ProvasSimuladas { get; set; }
 
         [Required(ErrorMessage = "Digite o nome do usuário!")]
         [StringLength(100)]
