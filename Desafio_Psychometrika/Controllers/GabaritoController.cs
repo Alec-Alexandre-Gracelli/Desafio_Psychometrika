@@ -1,7 +1,10 @@
 ﻿using Desafio_Psychometrika.Data;
 using Desafio_Psychometrika.Helper;
+using Desafio_Psychometrika.Models;
 using Desafio_Psychometrika.Repositorio;
+using Desafio_Psychometrika.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Desafio_Psychometrika.Controllers
 {
@@ -11,8 +14,24 @@ namespace Desafio_Psychometrika.Controllers
         {
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            Usuario usuarioLogado = _sessao.BuscarSessaoDoUsuario();
+
+            var listaResposta = await _bancoContext.UsuarioProvas.Where(x => x.UsuarioId == usuarioLogado.UsuarioId)
+                                                           .Select(s => s.Resposta).ToListAsync();
+
+            var ListaRespondido = await _bancoContext.UsuarioProvas.Where(x => x.UsuarioId == usuarioLogado.UsuarioId)
+                                                              .Select(s => s.Respondido).ToListAsync();
+                                                              
+            var gabaritoUsuario = new GabaritoViewModel
+            {
+                Resposta = listaResposta,
+                Respondido = ListaRespondido,
+            };
+
+            ViewBag.GabaritoUsuario = gabaritoUsuario;
+
             return View();
         }
     }

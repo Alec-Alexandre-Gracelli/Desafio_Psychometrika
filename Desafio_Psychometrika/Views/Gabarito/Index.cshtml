@@ -1,69 +1,55 @@
-﻿@* @model Desafio_Psychometrika.ViewModels.GabaritoViewModel
- *@
-
+﻿@using Desafio_Psychometrika.ViewModels
 @{
+    Layout = "_Layout";
     ViewData["Title"] = "Gabarito";
+
+    var gabaritoUsuario = ViewBag.GabaritoUsuario as GabaritoViewModel;
 }
 
 <div class="page">
-    <div class="formQuestion">
+    <div asp-controller="Gabarito" asp-action="Index" class="formQuestion">
         <table id="customers">
-            <tr>
-                <th>Questão</th>
-                <th>Resposta</th>
-                <th>Prova</th>
-                <th>Status</th>
-            </tr>
-
-            <tr>
-                <td>Icone</td>
-                <td>Questoes</td>
-                <td>AlternativaQuestoes</td>
-                <td>Respondido</td>
-                <td>
-                    <div class="btn-group" role="group">
-                        <a role="button" class="btn btn-primary">Mudar Resposta</a>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>Icone</td>
-                <td>Questoes</td>
-                <td>AlternativaQuestoes</td>
-                <td>Respondido</td>
-                <td>
-                    <div class="btn-group" role="group">
-                        <a role="button" class="btn btn-primary">Mudar Resposta</a>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>Icone</td>
-                <td>Questoes</td>
-                <td>AlternativaQuestoes</td>
-                <td>Respondido</td>
-                <td>
-                    <div class="btn-group" role="group">
-                        <a role="button" class="btn btn-primary">Mudar Resposta</a>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>Icone</td>
-                <td>Questoes</td>
-                <td>AlternativaQuestoes</td>
-                <td>Respondido</td>
-                <td>
-                    <div class="btn-group" role="group">
-                        <a role="button" class="btn btn-primary">Mudar Resposta</a>
-                    </div>
-                </td>
-            </tr>
+            <thead>
+                <tr>
+                    <th>Questão</th>
+                    <th>Resposta</th>
+                    <th>Prova</th>
+                    <th>Status</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < gabaritoUsuario.Resposta.Count; i++)
+                {
+                    <tr>
+                        <td><i class="fa fa-envelope-o"></i></td>
+                        <td>@(gabaritoUsuario.Resposta[i] != null ? gabaritoUsuario.Resposta[i].ToString() : "-")</td>
+                        <td>
+                            @{
+                                if (i < 2)
+                                {
+                                    <text>Matemática e suas Tecnologias</text>
+                                }
+                                else
+                                {
+                                    <text>Ciências da Natureza e suas Tecnologias</text>
+                                }
+                            }
+                        </td>
+                        <td>@(gabaritoUsuario.Respondido[i] ? "Respondido" : "Não Respondido")</td>
+                        <td>
+                            <div class="btn-group" role="group">
+                                <a role="button" class="btn btn-primary">
+                                    @(gabaritoUsuario.Respondido[i] ? "Mudar Resposta" : "Responder")
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
         </table>
         <div>
-            <input type="button" class="btn" value="Salvar Gabarito" />
+            <input type="submit" class="btn" value="Salvar Gabarito" />
         </div>
     </div>
 </div>
-
-

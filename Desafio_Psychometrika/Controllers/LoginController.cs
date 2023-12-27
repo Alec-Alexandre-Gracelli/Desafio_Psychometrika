@@ -19,14 +19,14 @@ namespace Desafio_Psychometrika.Controllers
         }
 
         [HttpPost]
-        public IActionResult Entrar(LoginViewModel loginModel)
+        public async Task<IActionResult> Entrar(LoginViewModel loginModel)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
 
-                    Usuario usuario = _usuarioRepositorio.BuscaPorLogin(loginModel.Nome, loginModel.Email);
+                    Usuario usuario =  _usuarioRepositorio.BuscaPorLogin(loginModel.Nome, loginModel.Email);
 
                     if (usuario != null)
                     {
@@ -46,7 +46,7 @@ namespace Desafio_Psychometrika.Controllers
             }
         }
 
-        public IActionResult Cadastro()
+        public async Task<IActionResult> Cadastro()
         {
             return View();
         }
@@ -58,7 +58,6 @@ namespace Desafio_Psychometrika.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    _usuarioRepositorio.Adicionar(usuarioModel);
                     if(usuarioModel != null)
                     {
                         TempData["MensagemSucesso"] = "Usuário cadastrado com sucesso!";

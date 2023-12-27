@@ -1,6 +1,7 @@
 ﻿@model UsuarioProva
 
 @{
+    Layout = "_Layout";
     ViewData["Title"] = "Segunda Questão";
 }
 
@@ -53,9 +54,7 @@
             </div>
         </div>
         <footer>
-            <a asp-controller="TerceiraQuestao" asp-action="Index" class="btn">
-                Revisar Depois
-            </a>
+            <input type="submit" class="btn" value="Revisar Depois">
             <input type="submit" class="btn" value="Salvar" />
         </footer>
     </form>
