@@ -60,6 +60,7 @@ namespace Desafio_Psychometrika.Controllers
                 {
                     if(usuarioModel != null)
                     {
+                        _usuarioRepositorio.Adicionar(usuarioModel);
                         TempData["MensagemSucesso"] = "Usuário cadastrado com sucesso!";
                         return RedirectToAction("Index");
                     }
