@@ -6,8 +6,26 @@
     var gabaritoUsuario = ViewBag.GabaritoUsuario as GabaritoViewModel;
 }
 
+<style>
+    /* Estilo para o alerta personalizado */
+    #customAlert {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: white;
+        color: lightskyblue;
+        padding: 10px;
+        border: 1px solid lightskyblue;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+</style>
+
 <div class="page">
     <div asp-controller="Gabarito" asp-action="Index" class="formQuestion">
+        <h1>Gabarito</h1>
         <table id="customers">
             <thead>
                 <tr>
@@ -39,7 +57,7 @@
                         <td>@(gabaritoUsuario.Respondido[i] ? "Respondido" : "Não Respondido")</td>
                         <td>
                             <div class="btn-group" role="group">
-                                <a role="button" class="btn btn-primary">
+                                <a role="button" class="btn btn-primary" asp-controller="@gabaritoUsuario.ControllerActionList[i].Item1" asp-action="@gabaritoUsuario.ControllerActionList[i].Item2">
                                     @(gabaritoUsuario.Respondido[i] ? "Mudar Resposta" : "Responder")
                                 </a>
                             </div>
@@ -49,7 +67,33 @@
             </tbody>
         </table>
         <div>
-            <input type="submit" class="btn" value="Salvar Gabarito" />
+            <input type="button" class="btn" value="Salvar Respostas" onclick="salvarRespostas()" id="btnSalvar" />
+        </div>
+        <div>
+            <a asp-controller="Login" asp-action="Index" class="btn"  id="btnMenu" style="display: none;">Voltar ao Menu</a>
+        </div>
+        <div>
+            <a asp-controller="Ranking" asp-action="Index" class="btn" id="btnRanking" style="display: none;">Ranking</a>
         </div>
     </div>
 </div>
+
+<div id="customAlert"></div>
+
+<script>
+    function salvarRespostas() {
+
+        document.getElementById("btnSalvar").style.display = "none";
+
+        var customAlert = document.getElementById("customAlert");
+        customAlert.innerHTML = "Respostas enviadas";
+        customAlert.style.display = "block";
+
+        document.getElementById("btnMenu").style.display = "block";
+        document.getElementById("btnRanking").style.display = "block";
+
+        setTimeout(function () {
+            customAlert.style.display = "none";
+        }, 3000);
+    }
+</script>

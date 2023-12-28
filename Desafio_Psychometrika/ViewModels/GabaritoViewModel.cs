@@ -6,5 +6,7 @@ namespace Desafio_Psychometrika.ViewModels
     {
         public List<Resposta?> Resposta { get; set; }
         public List<bool> Respondido { get; set; }
+        public List<Tuple<string, string>> ControllerActionList { get; set; }
+
     }
 }

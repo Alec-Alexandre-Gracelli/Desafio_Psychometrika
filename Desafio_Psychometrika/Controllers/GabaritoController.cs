@@ -23,11 +23,20 @@ namespace Desafio_Psychometrika.Controllers
 
             var ListaRespondido = await _bancoContext.UsuarioProvas.Where(x => x.UsuarioId == usuarioLogado.UsuarioId)
                                                               .Select(s => s.Respondido).ToListAsync();
-                                                              
+
+            var listaControllerAction = new List<Tuple<string, string>>
+            {
+                Tuple.Create("PrimeiraQuestao", "Editar"),
+                Tuple.Create("SegundaQuestao", "Editar"),
+                Tuple.Create("TerceiraQuestao", "Editar"),
+                Tuple.Create("QuartaQuestao", "Editar"),
+            };
+
             var gabaritoUsuario = new GabaritoViewModel
             {
                 Resposta = listaResposta,
                 Respondido = ListaRespondido,
+                ControllerActionList = listaControllerAction
             };
 
             ViewBag.GabaritoUsuario = gabaritoUsuario;

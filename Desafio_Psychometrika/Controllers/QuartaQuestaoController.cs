@@ -15,6 +15,22 @@ namespace Desafio_Psychometrika.Controllers
 
         public async Task<IActionResult> Index()
         {
+            Usuario usuarioLogado = _sessao.BuscarSessaoDoUsuario();
+
+            var existeUsuarioProvas = _bancoContext.UsuarioProvas
+                                        .Where(x => x.UsuarioId == usuarioLogado.UsuarioId && x.ProvaSimuladoId == _bancoContext.ProvaSimulados
+                                        .Where(p => p.ProvaNome == "Ciências da Natureza e suas tecnologias")
+                                        .Select(s => s.ProvaSimuladoId)
+                                        .FirstOrDefault() && x.QuestoesId == _bancoContext.Questoes
+                                        .Where(x => x.Questao == 4)
+                                        .Select(s => s.QuestoesId)
+                                        .FirstOrDefault())
+                                        .ToList();
+            if (existeUsuarioProvas != null)
+            {
+                _bancoContext.UsuarioProvas.RemoveRange(existeUsuarioProvas);
+                await _bancoContext.SaveChangesAsync();
+            }
             return View();
         }
 
