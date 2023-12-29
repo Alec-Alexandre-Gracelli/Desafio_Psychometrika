@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Desafio_Psychometrika.Models.Enum;
+using System.ComponentModel.DataAnnotations;
 
 namespace Desafio_Psychometrika.Models
 {
@@ -7,8 +8,6 @@ namespace Desafio_Psychometrika.Models
         public Guid GabaritoId { get; set; }
         public Guid ProvaSimuladoId { get; set; }
         public Guid QuestoesId { get; set;}
-
-        [StringLength(1)]
-        public string RespostaCorreta { get; set;}
+        public Resposta RespostaCorreta { get; set;}
     }
 }

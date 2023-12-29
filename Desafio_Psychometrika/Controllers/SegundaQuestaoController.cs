@@ -72,5 +72,10 @@ namespace Desafio_Psychometrika.Controllers
             }
             return RedirectToAction("Index", "TerceiraQuestao");
         }
+
+        public async Task<IActionResult> Editar()
+        {
+            return View();
+        }
     }
 }

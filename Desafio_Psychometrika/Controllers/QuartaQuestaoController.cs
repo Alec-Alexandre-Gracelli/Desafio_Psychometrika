@@ -72,5 +72,10 @@ namespace Desafio_Psychometrika.Controllers
             }
             return RedirectToAction("Index", "Gabarito");
         }
+
+        public async Task<IActionResult> Editar()
+        {
+            return View();
+        }
     }
 }
